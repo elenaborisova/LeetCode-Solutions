@@ -1,6 +1,3 @@
-import random
-
-
 class BinarySearchTree:
     def __init__(self, value, depth=1):
         self.value = value
@@ -9,6 +6,7 @@ class BinarySearchTree:
         self.right = None
 
     def insert(self, value):
+        # Time: O(n) if imbalanced; O(log n) if balanced
         if value < self.value:
             if self.left is None:
                 self.left = BinarySearchTree(value, self.depth + 1)
@@ -23,6 +21,7 @@ class BinarySearchTree:
                 self.right.insert(value)
 
     def get_node_by_value(self, value):
+        # Time: O(n) if imbalanced; O(log n) if balanced
         if self.value == value:
             return self
         elif self.left is not None and value < self.value:
@@ -32,19 +31,42 @@ class BinarySearchTree:
         else:
             return None
 
-    def depth_first_traversal(self):
+    # Traversals Time: O(n)
+    def depth_first_traversal_inorder(self):  # left, root, right
         if self.left is not None:
-            self.left.depth_first_traversal()
+            self.left.depth_first_traversal_inorder()
         print(f'Depth={self.depth}, Value={self.value}')
         if self.right is not None:
-            self.right.depth_first_traversal()
+            self.right.depth_first_traversal_inorder()
+
+    def depth_first_traversal_preorder(self):  # root, left, right
+        print(f'Depth={self.depth}, Value={self.value}')
+        if self.left is not None:
+            self.left.depth_first_traversal_preorder()
+        if self.right is not None:
+            self.right.depth_first_traversal_preorder()
+
+    def depth_first_traversal_postorder(self):  # left, right, root
+        if self.left is not None:
+            self.left.depth_first_traversal_postorder()
+        if self.right is not None:
+            self.right.depth_first_traversal_postorder()
+        print(f'Depth={self.depth}, Value={self.value}')
 
 
-print("Creating Binary Search Tree rooted at value 15:")
-tree = BinarySearchTree(15)
-
-for x in range(10):
-    tree.insert(random.randint(0, 100))
+root = BinarySearchTree(100)
+root.insert(50)
+root.insert(25)
+root.insert(75)
+root.insert(150)
+root.insert(125)
+root.insert(175)
 
 print("Printing the inorder depth-first traversal:")
-tree.depth_first_traversal()
+root.depth_first_traversal_inorder()
+
+print("Printing the preorder depth-first traversal:")
+root.depth_first_traversal_preorder()
+
+print("Printing the postorder depth-first traversal:")
+root.depth_first_traversal_postorder()
