@@ -42,3 +42,4 @@ def count_subarrays2(arr):
 
 print(count_subarrays2([3, 4, 1, 6, 2]))
 print(count_subarrays([2, 4, 7, 1, 5, 3]))
+print(count_subarrays([3, 2, 5, 4, 9, 6, 8]))

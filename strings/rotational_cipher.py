@@ -1,10 +1,8 @@
-def rotate_char(char, rotation_factor, upper_bound, lower_bound, count):
-    char_ord = ord(char)
+def rotate_char(char_ord, upper_bound, lower_bound):
 
     while char_ord not in range(lower_bound, upper_bound + 1):
-        char_ord = ((char_ord - lower_bound + rotation_factor) % count) + lower_bound
-    else:
-        char_ord += rotation_factor
+        overhead = char_ord - upper_bound
+        char_ord = (lower_bound - 1) + overhead
 
     return char_ord
 
@@ -14,13 +12,13 @@ def rotational_cipher(s, rotation_factor):
 
     for char in s:
         if char.isalpha() and char.isupper():
-            char_ord = rotate_char(char, rotation_factor, 90, 65, 26)
+            char_ord = rotate_char(ord(char) + rotation_factor, 90, 65)
             new_s += chr(char_ord)
         elif char.isalpha() and char.islower():
-            char_ord = rotate_char(char, rotation_factor, 122, 97, 26)
+            char_ord = rotate_char(ord(char) + rotation_factor, 122, 97)
             new_s += chr(char_ord)
         elif char.isdigit():
-            char_ord = rotate_char(char, rotation_factor, 57, 48, 10)
+            char_ord = rotate_char(ord(char) + rotation_factor, 57, 48)
             new_s += chr(char_ord)
         else:
             new_s += char
@@ -29,4 +27,3 @@ def rotational_cipher(s, rotation_factor):
 
 
 print(rotational_cipher('abcdefghijklmNOPQRSTUVWXYZ0123456789', 39))
-print(rotational_cipher("Nyx'd mbi, czkxscr pvkdwkdo", 1232))

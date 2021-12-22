@@ -23,6 +23,22 @@ def find_signature_counts(arr):
     return signatures
 
 
+def find_signature_counts_optimized(arr):
+    res = []
+
+    for i, elem in enumerate(arr):
+        value = elem
+        count = 1
+
+        while arr[value-1] != elem:
+            value = arr[value - 1]
+            count += 1
+        res.append(count)
+
+    return res
+
+
+# Test cases:
 print(find_signature_counts([1, 2]))
 print(find_signature_counts([2, 1]))
 print(find_signature_counts([5, 1, 2, 4, 3]))
