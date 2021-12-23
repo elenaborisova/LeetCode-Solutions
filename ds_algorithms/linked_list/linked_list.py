@@ -12,6 +12,8 @@ class Node:
     def set_next_node(self, next_node):
         self.next_node = next_node
 
+    def __repr__(self):
+        return str(self.value)
 
 class LinkedList:
     def __init__(self, value=None):
