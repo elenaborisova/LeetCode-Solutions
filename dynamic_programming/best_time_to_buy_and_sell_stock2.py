@@ -1,6 +1,4 @@
 def max_profit(prices):
-    valley = prices[0]
-    peak = prices[0]
     max_p = 0
 
     i = 0
@@ -19,6 +17,7 @@ def max_profit(prices):
     return max_p
 
 
+# Test cases:
 print(max_profit([7, 1, 5, 3, 6, 4]))
 print(max_profit([7, 6, 4, 3, 1]))
 print(max_profit([1, 2]))
