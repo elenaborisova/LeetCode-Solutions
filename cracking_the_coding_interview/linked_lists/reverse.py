@@ -18,11 +18,13 @@ def reverse(ll):
 def reverse2(ll):
     prev = None
     current = ll.get_head_node()
-    while current is not None:
+
+    while current:
         next = current.get_next_node()
         current.set_next_node(prev)
         prev = current
         current = next
+
     ll.head_node = prev
 
 

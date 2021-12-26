@@ -1,5 +1,6 @@
 def max_profit(prices):
     # Brute Force; Time: O(n^2)
+
     max_p, i, j = 0, 0, 1
 
     while i < len(prices):
