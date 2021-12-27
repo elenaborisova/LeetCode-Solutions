@@ -29,6 +29,6 @@ def length_of_longest_substring_optimized(s):
 
 
 # Test cases:
-print(length_of_longest_substring('abcabcbb') == 3)
+print(length_of_longest_substring_optimized('abcabcbb') == 3)
 print(length_of_longest_substring('bbbbb') == 1)
 print(length_of_longest_substring('pwwkew') == 3)

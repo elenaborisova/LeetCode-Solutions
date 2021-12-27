@@ -46,6 +46,7 @@ def pair_sums_optimized2(arr, k):
     return counter
 
 
+# Test cases:
 print(number_of_ways([1, 2, 3, 4, 3], 6) == 2)
 print(number_of_ways([1, 5, 3, 3, 3], 6) == 4)
 print(number_of_ways([1, 1, 1, 1, 1, 1], 2) == 15)

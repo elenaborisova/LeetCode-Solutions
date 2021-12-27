@@ -63,6 +63,7 @@ def visible_nodes_bfs2(root):
     return len(left_visibles)
 
 
+# Test cases:
 root_1 = TreeNode(8)
 root_1.left = TreeNode(3)
 root_1.right = TreeNode(10)

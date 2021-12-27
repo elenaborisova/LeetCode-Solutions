@@ -29,7 +29,7 @@ def count_of_nodes(root, queries, s):
             for child in current.children:
                 queue.append(child)
 
-            if new_root_is_found:
+            if new_root_is_found and current.val == letter:
                 visited.append(current)
 
         count = len([n for n in visited if letters_map[n.val] == letter])
