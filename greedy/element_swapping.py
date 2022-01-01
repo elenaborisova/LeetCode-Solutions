@@ -1,27 +1,35 @@
-import heapq
+def find_min_idx(i, count, arr, min_element):
+    min_idx = 0
+
+    while i <= count and i < len(arr):
+        if arr[i] < min_element:
+            min_element = arr[i]
+            min_idx = i
+        i += 1
+
+    return min_idx
 
 
 def find_min_array(arr, k):
-    h = []
-
+    min_element = 1_000_000
     i = 0
-    while i <= k and i < len(arr):
-        heapq.heappush(h, arr[i])
-        i += 1
+    count = k
 
-    while k and h:
-        min_el = heapq.heappop(h)
+    while k:
+        min_idx = find_min_idx(i, count, arr, min_element)
 
-        # TODO: handle duplicate values
-        idx = arr.index(min_el)
-        while idx and k:
-            arr[idx], arr[idx - 1] = arr[idx - 1], arr[idx]
-            idx -= 1
+        while k and min_idx:
+            arr[min_idx], arr[min_idx - 1] = arr[min_idx - 1], arr[min_idx]
+            min_idx -= 1
             k -= 1
+
+        i = min_idx + 1
+        min_element = 1_000_000
 
     return arr
 
 
+# Test cases:
 print(find_min_array([5, 3, 1], 2) == [1, 5, 3])
 print(find_min_array([8, 9, 11, 2, 1], 3) == [2, 8, 9, 11, 1])
 print(find_min_array([5, 6, 1, 2, 6, 7, 8, 9], 3) == [1, 5, 2, 6, 6, 7, 8, 9])
