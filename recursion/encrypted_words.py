@@ -16,6 +16,7 @@ def find_encrypted_word(s):
     return r
 
 
+# Test cases:
 print(find_encrypted_word('abc') == 'bac')
 print(find_encrypted_word('abcd') == 'bacd')
 print(find_encrypted_word('abcxcba') == 'xbacbca')
