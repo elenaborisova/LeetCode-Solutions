@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -28,11 +31,11 @@ def invert_tree(root):
         return []
 
     root = build_tree_from_list_bfs(root)
-    queue = [root]
+    queue = deque([root])
     arr = []
 
     while queue:
-        current = queue.pop(0)
+        current = queue.popleft()
 
         if current:
             arr.append(current.val)
