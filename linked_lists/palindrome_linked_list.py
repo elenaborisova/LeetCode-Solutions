@@ -8,8 +8,38 @@ class ListNode:
 
 
 def is_palindrome(head):
-    # Time: O(n); Space: O(1)
+    # Find middle
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
 
+    # Even/odd n nodes (will work without this step as well)
+    head2 = slow
+    if fast:
+        head2 = head2.next
+
+    # Reverse second half
+    prev, cur = None, head2
+    while cur:
+        next_node = cur.next
+        cur.next = prev
+        prev = cur
+        cur = next_node
+    head2 = prev
+
+    # Check for palindrome
+    one, two = head, head2
+    while one and two:
+        if one.val != two.val:
+            return False
+        one = one.next
+        two = two.next
+    return True
+
+
+# Time: O(n); Space: O(1)
+def is_palindrome2(head):
     # Find middle node
     slow = fast = head
     while fast and fast.next:
@@ -33,9 +63,8 @@ def is_palindrome(head):
     return True
 
 
-def is_palindrome2(head):
-    # Time: O(n); Space: O(n)
-
+# Time: O(n); Space: O(n)
+def is_palindrome3(head):
     stack = []  # storing first half
 
     # finding middle node
